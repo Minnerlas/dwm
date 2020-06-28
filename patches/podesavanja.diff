@@ -1,0 +1,47 @@
+2a3,9
+> #include <X11/XF86keysym.h>
+> 
+> static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
+> static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
+> static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
+> 
+> 
+29,31c36,40
+< 	/* class      instance    title       tags mask     isfloating   monitor */
+< 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+< 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+---
+> 	/* class                    instance    title       tags mask     isfloating   monitor */
+> 	{ "Gimp",                   NULL,       NULL,       0,            1,           -1 },
+> 	{ "Qemu-system-x86_64",     NULL,       NULL,       0,            1,           -1 },
+> 		{ "matplotlib",             NULL,       NULL,       0,            1,           -1 },
+> 	{ "Firefox",                NULL,       NULL,       1 << 8,       0,           -1 },
+47c56
+< #define MODKEY Mod1Mask
+---
+> #define MODKEY Mod4Mask
+59,60c68,75
+< static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+< static const char *termcmd[]  = { "st", NULL };
+---
+> static const char *dmenucmd[]       = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+> static const char *termcmd[]        = { "st", NULL };
+> static const char *slockcmd[] 		= { "slock", NULL };
+> //static const char *nmtuicmd[] 		= { "st", "-e", "nmtui", NULL };
+> static const char *nmdmenu[] 		= { "networkmanager_dmenu", NULL };
+> static const char *firefoxcmd[] 	= { "firefox", NULL };
+> static const char *powercmd[] 		= { "/home/nikola/.skripte/power.sh", NULL };
+> static const char *bashmountcmd[]	= { "st", "-e", "bashmount", NULL };
+66a82,83
+> 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = firefoxcmd } },
+> 	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = nmdmenu } },
+72a90
+> 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = slockcmd } },
+78a97
+> 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = bashmountcmd } },
+86a106
+> 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = powercmd } },
+96a117,119
+> 	{ 0,                       XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
+> 	{ 0,                       XF86XK_AudioMute,        spawn, {.v = mutevol } },
+> 	{ 0,                       XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
