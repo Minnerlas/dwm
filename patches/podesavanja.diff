@@ -49,7 +49,7 @@
 +//static const char *nmtuicmd[] 		= { "st", "-e", "nmtui", NULL };
 +static const char *nmdmenu[] 		= { "networkmanager_dmenu", NULL };
 +static const char *firefoxcmd[] 	= { "firefox", NULL };
-+static const char *powercmd[] 		= { "/home/nikola/.skripte/power.sh", NULL };
++static const char *powercmd[] 		= { "/home/nikola/wm/skripte/power.sh", NULL };
 +static const char *bashmountcmd[]	= { "st", "-e", "bashmount", NULL };
  
  static Key keys[] = {
